@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Objetivo 1 · Territorio y recursos — PNSI 2025-2029</title>
+  <meta name="description" content="Objetivo 1 del PNSI 2025-2029: control efectivo del territorio y sus recursos. Análisis de Keyword." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" />
@@ -14,18 +16,20 @@
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a href="../index.html" class="brand" aria-label="Keyword — inicio">
-      <img src="../img/logo-keyword-white.svg" alt="Keyword" class="brand__logo" />
+      <img src="../img/logo-keyword-white.svg" alt="Keyword" class="brand__logo" width="120" height="26" />
     </a>
-    <nav class="nav-crumbs" aria-label="Ruta">
+    <nav class="nav-crumbs" aria-label="Ruta de navegación">
       <a href="../index.html">PNSI 2025-2029</a> · <span>Objetivo 1</span>
     </nav>
   </div>
 </header>
 
+<main>
+
 <!-- ==========================================================
-     BARRA SUPERIOR — 7 mini cards (como el PDF muestra 4 ejes)
+     MINI NAVEGACIÓN — los 7 objetivos
      ========================================================== -->
-<div class="wrap obj-nav-top">
+<nav class="wrap obj-nav-top" aria-label="Objetivos del plan">
   <div class="obj-nav-top__grid">
     <a class="obj-nav-top__item obj-nav-top__item--1" href="objetivo-1.html" aria-current="page">
       <small>01</small><span>Territorio</span>
@@ -49,17 +53,17 @@
       <small>07</small><span>Financiamiento</span>
     </a>
   </div>
-</div>
+</nav>
 
 <!-- ==========================================================
-     HERO DEL OBJETIVO — réplica de "Eje Social 01" del PDF
+     HERO DEL OBJETIVO
      ========================================================== -->
-<section class="obj-hero obj-hero--1">
+<section class="obj-hero obj-hero--1" aria-labelledby="titulo-objetivo">
   <div class="wrap">
-    <p class="obj-hero__brand">Objetivo</p>
-    <div class="obj-hero__name">
-      <span class="obj-hero__num-outline">01</span>
-      <span class="obj-hero__name-inner">Territorio</span>
+    <p class="obj-hero__kicker">Objetivo</p>
+    <div class="obj-hero__row">
+      <h1 class="obj-hero__name" id="titulo-objetivo">Territorio</h1>
+      <span class="obj-hero__num" aria-hidden="true">01</span>
     </div>
 
     <div class="obj-hero__desc">
@@ -69,9 +73,11 @@
       y control de la cadena logística de las economías ilícitas.
     </div>
 
-    <!-- Tarjeta de objetivo con foto — patrón del PDF "Objetivo 1:" -->
     <div class="obj-intro">
       <div class="obj-intro__card">
+        <span class="obj-intro__badge" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
         <p class="obj-intro__label">Objetivo 1:</p>
         <p class="obj-intro__text">
           <strong>Control efectivo del territorio y sus recursos</strong>,
@@ -80,51 +86,46 @@
         </p>
       </div>
       <div class="obj-intro__photo">
-        <img src="../img/obj-1-photo.jpg" alt="" />
+        <img src="../img/obj-1-photo.jpg" alt="Zona fronteriza del Ecuador" />
       </div>
     </div>
 
-    <!-- Grilla de contenido — tarjetas del objetivo -->
     <div class="content-grid">
 
       <article class="tile">
         <div class="tile__head">
-          <div>
-            <p class="tile__body">
-              <strong>Recuperación del control</strong> en zonas fronterizas y
-              territorios afectados por el crimen organizado, priorizando la
-              desarticulación de grupos armados organizados.
-            </p>
-          </div>
-          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <p class="tile__body">
+            <strong>Recuperación del control</strong> en zonas fronterizas y
+            territorios afectados por el crimen organizado, priorizando la
+            desarticulación de grupos armados organizados.
+          </p>
+          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/>
           </svg>
         </div>
         <div class="meta">
-          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
           <span class="meta__flag">Metas:</span>
         </div>
         <ul class="meta-list">
-          <li>Fortalecer el control de Zonas de Seguridad de Frontera.</li>
+          <li>Fortalecer el control de las Zonas de Seguridad de Frontera.</li>
           <li>Vigilar rutas aéreas, marítimas y terrestres vinculadas a economías ilícitas.</li>
         </ul>
       </article>
 
       <article class="tile tile--accent-1">
         <div class="tile__head">
-          <div>
-            <p class="tile__body">
-              <strong>Minería:</strong> incremento del control de la cadena
-              logística de la minería ilegal e impulso a la formalización con
-              actualización del catastro minero.
-            </p>
-          </div>
-          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <p class="tile__body">
+            <strong>Minería:</strong> incremento del control de la cadena
+            logística de la minería ilegal e impulso a la formalización con
+            actualización del catastro minero.
+          </p>
+          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 20l6-14 6 8 3-4 3 10z"/>
           </svg>
         </div>
         <div class="meta">
-          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
           <span class="meta__flag meta__flag--green">Meta:</span>
         </div>
         <p class="meta-plain">
@@ -135,19 +136,17 @@
 
       <article class="tile tile--light">
         <div class="tile__head">
-          <div>
-            <p class="tile__body">
-              <strong>Cadena logística:</strong> refuerzo del control sobre
-              armas, explosivos, municiones y agentes químicos, biológicos y
-              radiológicos.
-            </p>
-          </div>
-          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="8" width="13" height="9"/><path d="M16 11h4l1 3v3h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+          <p class="tile__body">
+            <strong>Cadena logística:</strong> refuerzo del control sobre
+            armas, explosivos, municiones y agentes químicos, biológicos y
+            radiológicos.
+          </p>
+          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="13" height="9" rx="1"/><path d="M16 11h4l1 3v3h-5"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/>
           </svg>
         </div>
         <div class="meta">
-          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          <svg class="meta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
           <span class="meta__flag">Meta:</span>
         </div>
         <p class="meta-plain">
@@ -158,14 +157,12 @@
 
       <article class="tile">
         <div class="tile__head">
-          <div>
-            <p class="tile__body">
-              <strong>Impacto empresarial:</strong> el sector debe prepararse
-              para nuevos requisitos de trazabilidad y cumplimiento en toda la
-              cadena logística, especialmente en puertos y aeropuertos.
-            </p>
-          </div>
-          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <p class="tile__body">
+            <strong>Impacto empresarial:</strong> el sector debe prepararse
+            para nuevos requisitos de trazabilidad y cumplimiento en toda la
+            cadena logística, especialmente en puertos y aeropuertos.
+          </p>
+          <svg class="tile__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 21V10l8-6 8 6v11M4 21h16M9 21v-6h6v6"/>
           </svg>
         </div>
@@ -175,18 +172,15 @@
   </div>
 </section>
 
-<!-- ==========================================================
-     FOOTER
-     ========================================================== -->
+</main>
+
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
-    <div class="site-footer__brand">
-      <img src="../img/logo-keyword-white.svg" alt="Keyword" class="site-footer__logo" />
-    </div>
-    <div class="site-footer__legal">
+    <img src="../img/logo-keyword-white.svg" alt="Keyword" class="site-footer__logo" width="115" height="28" />
+    <p class="site-footer__legal">
       © Todos los derechos reservados<br/>
       Contacto: <a href="mailto:info@keyword.com.ec">info@keyword.com.ec</a>
-    </div>
+    </p>
   </div>
 </footer>
 
