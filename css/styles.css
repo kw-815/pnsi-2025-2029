@@ -496,6 +496,127 @@ p { margin: 0; }
 .topic ul li strong { font-weight: 700; opacity: 1; }
 
 /* ============================================================
+   SISTEMA DE SEGURIDAD Y PRINCIPIOS
+   Tres roles institucionales + tarjeta ancha de principios.
+   ============================================================ */
+.sysgrid {
+  display: grid;
+  gap: var(--s-3);
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px)  { .sysgrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px)  { .sysgrid { grid-template-columns: 1fr; } }
+
+.sysrole {
+  position: relative;
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--t-10);
+  background: var(--t-08);
+  color: var(--white);
+  transition: transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
+}
+.sysrole:hover { transform: translateY(-3px); background: var(--t-10); }
+.sysrole::before {
+  content: "";
+  position: absolute; inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--sys-accent, var(--orange));
+}
+.sysrole--dir { --sys-accent: var(--obj-1); }
+.sysrole--exe { --sys-accent: var(--obj-2); }
+.sysrole--sup { --sys-accent: var(--obj-7); }
+
+.sysrole__label {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 600;
+  color: var(--sys-accent);
+  padding-left: var(--s-2);
+}
+.sysrole__body {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--t-90);
+  padding-left: var(--s-2);
+}
+
+.sysprinciples {
+  margin-top: var(--s-4);
+  padding: clamp(var(--s-4), 4vw, var(--s-6));
+  border-radius: var(--r-lg);
+  background: var(--indigo-deep);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sysprinciples::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -55%; right: -25%;
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orange) 0%, transparent 68%);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.sysprinciples__intro {
+  margin: 0 0 var(--s-4);
+  font-size: var(--fs-md);
+  color: var(--t-90);
+}
+.sysprinciples__intro strong { color: var(--orange); font-weight: 700; }
+
+.sysprinciples__list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  gap: var(--s-3);
+  grid-template-columns: repeat(3, 1fr);
+  counter-reset: sysp;
+}
+@media (max-width: 900px) { .sysprinciples__list { grid-template-columns: 1fr; } }
+
+.sysprinciples__list li {
+  position: relative;
+  padding: var(--s-3) var(--s-3) var(--s-3) 2.4rem;
+  border-left: 1px solid var(--t-15);
+  counter-increment: sysp;
+}
+.sysprinciples__list li::before {
+  content: counter(sysp, decimal-leading-zero);
+  position: absolute;
+  left: var(--s-3); top: var(--s-3);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.sysprinciples__k {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.sysprinciples__v {
+  display: block;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--t-75);
+}
+
+/* ============================================================
    MURO DE OBJETIVOS — cover cards (firma del PDF)
    Desktop: fila de 4 + fila de 3 centrada
    ============================================================ */
@@ -1226,6 +1347,171 @@ p { margin: 0; }
     text-align: left;
   }
   .site-footer__copy { text-align: left; }
+}
+
+/* ============================================================
+   TABLA DE ESTRATEGIAS  (.stbl)
+   ------------------------------------------------------------
+   Refleja la estructura del Word: Estrategia | Institución | Ejecución.
+   Desktop: tabla real con cabecera fija y filas divididas por línea fina.
+   Móvil: cada fila se convierte en una tarjeta apilada con etiquetas
+   de columna encima (patrón responsive-table).
+   Convive con la maquinaria de .phase (bandera con diana, contador).
+   Reemplaza al muro de .strat, que queda en el CSS por si se pide volver.
+   ============================================================ */
+.stbl {
+  --stbl-line: color-mix(in srgb, var(--white) 12%, transparent);
+  --stbl-line-strong: color-mix(in srgb, var(--white) 18%, transparent);
+  --stbl-bg:  color-mix(in srgb, var(--white) 4%, transparent);
+  --stbl-bg2: color-mix(in srgb, var(--white) 7%, transparent);
+
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--stbl-bg);
+  border: 1px solid var(--stbl-line);
+  isolation: isolate;
+}
+
+/* Cabecera — visible sólo en desktop */
+.stbl__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: 0.9rem clamp(1rem, 2vw, 1.75rem);
+  background: color-mix(in srgb, var(--indigo-deep) 65%, transparent);
+  border-bottom: 1px solid var(--stbl-line-strong);
+}
+.stbl__hcell {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-weight: 600;
+  color: var(--t-60);
+}
+.stbl__hcell--exec { text-align: right; min-width: 9rem; }
+
+.stbl__body { display: block; }
+
+/* Fila — grid en desktop, colapsa en móvil */
+.stbl__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: clamp(0.9rem, 1.6vw, 1.25rem) clamp(1rem, 2vw, 1.75rem);
+  border-bottom: 1px solid var(--stbl-line);
+  transition: background var(--t-fast) var(--ease);
+}
+.stbl__row:last-child { border-bottom: none; }
+.stbl__row:nth-child(even) { background: var(--stbl-bg2); }
+.stbl__row:hover { background: color-mix(in srgb, var(--white) 9%, transparent); }
+
+.stbl__cell {
+  min-width: 0;
+  color: var(--white);
+}
+.stbl__cell--exec { justify-self: end; }
+
+/* Etiqueta de columna — sólo se ve al colapsar en móvil */
+.stbl__cell[data-col]::before { content: none; }
+
+/* Celda "Estrategia": glyph + texto */
+.stbl__strat {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+}
+.stbl__glyph {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--t-08);
+  border: 1px solid var(--t-15);
+  color: var(--accent, var(--orange));
+  display: grid;
+  place-items: center;
+}
+.stbl__glyph svg { width: 24px; height: 24px; }
+.stbl__text {
+  margin: 0;
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--t-90);
+}
+.stbl__text b { font-weight: 700; color: var(--white); }
+.stbl__text span { opacity: 0.85; }
+.stbl__num {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--accent, var(--orange));
+  margin-right: 0.4em;
+}
+
+/* Institución */
+.stbl__inst {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  color: var(--t-75);
+}
+.stbl__inst .strat__inst-icon {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  color: var(--accent, var(--orange));
+}
+
+/* Chip de ejecución */
+.stbl__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--orange);
+  white-space: nowrap;
+}
+.stbl__chip--inmediata { background: var(--orange); color: var(--ink); }
+.stbl__chip--1         { background: #7BD8EA; color: var(--ink); }
+.stbl__chip--2         { background: var(--green); color: var(--ink); }
+.stbl__chip--3         { background: var(--obj-7); color: var(--ink); }
+
+/* ---- Responsive: tabla → cards apiladas ---- */
+@media (max-width: 820px) {
+  .stbl__head { display: none; }
+  .stbl__row {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+    padding: var(--s-4) clamp(0.9rem, 4vw, 1.25rem);
+    align-items: start;
+  }
+  .stbl__cell--exec { justify-self: start; }
+  .stbl__cell[data-col]::before {
+    content: attr(data-col);
+    display: block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-weight: 600;
+    color: var(--t-60);
+    margin-bottom: 0.4rem;
+  }
+  /* En móvil el chip de ejecución es redundante con la bandera de la fase:
+     lo ocultamos para no repetir información — se mantiene sólo la etiqueta
+     "Ejecución" implícita en la agrupación. */
+  .stbl__cell--exec { display: none; }
+}
+
+@media (max-width: 480px) {
+  .stbl__glyph { flex-basis: 38px; width: 38px; height: 38px; }
+  .stbl__glyph svg { width: 20px; height: 20px; }
 }
 
 /* ============================================================
