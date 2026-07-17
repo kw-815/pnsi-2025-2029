@@ -849,22 +849,24 @@ p { margin: 0; }
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem 1.1rem 0.45rem 2.6rem;
+  padding: 0.5rem 1.15rem 0.5rem 3.35rem;
   border-radius: var(--r-sm);
   font-size: var(--fs-md);
   font-weight: 700;
   color: var(--ink);
   white-space: nowrap;
+  overflow: hidden;
 }
-/* La diana se sale por la izquierda y solapa la bandera */
+/* La diana vive dentro de la bandera, no encaramada sobre el borde */
 .phase__diana {
   position: absolute;
-  left: -1.35rem;
+  left: 0.4rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  color: var(--white);
+  width: 40px;
+  height: 40px;
+  color: var(--ink);
+  opacity: 0.65;
   pointer-events: none;
 }
 .phase__n {
@@ -981,31 +983,31 @@ p { margin: 0; }
 }
 .strat__text span { opacity: 0.85; }
 
-/* Institución con tratamiento de bandera e ícono solapado */
+/* Institución con tratamiento de bandera, ícono contenido */
 .strat__inst {
   position: relative;
   clear: both;
   display: inline-flex;
   align-items: center;
   margin-top: var(--s-4);
-  margin-left: 0.9rem;
-  padding: 0.35rem 0.85rem 0.35rem 1.6rem;
+  padding: 0.4rem 0.85rem 0.4rem 2.45rem;
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.14);
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.01em;
+  overflow: hidden;
 }
 .strat__inst-icon {
   position: absolute;
-  left: -0.9rem;
+  left: 0.3rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   color: currentColor;
-  opacity: 0.85;
+  opacity: 0.8;
   pointer-events: none;
 }
 
