@@ -703,7 +703,12 @@ p { margin: 0; }
 .obj-hero--6 .obj-hero__name { color: var(--obj-6); }
 .obj-hero--7 .obj-hero__name { color: var(--obj-7); }
 
-/* Descriptor con conector de punto (como el PDF) */
+/* Descriptor con conector de punto.
+   OJO: hoy no se emite en ninguna página. En el PDF de referencia el eje
+   tiene DOS textos distintos (una bajada temática + el objetivo), pero
+   nuestro documento trae un solo texto por objetivo, así que este bloque
+   repetía palabra por palabra lo que ya dice la tarjeta blanca.
+   El estilo se conserva por si más adelante llega una bajada propia. */
 .obj-hero__desc {
   position: relative;
   margin-top: var(--s-5);
@@ -741,7 +746,7 @@ p { margin: 0; }
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: var(--s-3);
-  margin-top: var(--s-4);
+  margin-top: clamp(2rem, 4vw, 3rem);
   align-items: stretch;
 }
 @media (max-width: 760px) { .obj-intro { grid-template-columns: 1fr; } }
@@ -991,7 +996,12 @@ p { margin: 0; }
   margin: 0.15rem 1.15rem 0.6rem 0;
 }
 
-/* Numeral como chip, no como texto suelto */
+/* Numeral como chip.
+   OJO: hoy no se emite ningún .strat__num — la numeración está apagada
+   desde build.py (SHOW_NUM = False), porque las estrategias son acciones
+   independientes y el número no implica prioridad ni secuencia.
+   Para revivirla: poner SHOW_NUM = True en build.py y regenerar. Este
+   estilo se conserva intacto para ese caso. */
 .strat__num {
   display: inline-block;
   margin-bottom: 0.7rem;
