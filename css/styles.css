@@ -927,16 +927,25 @@ p { margin: 0; }
    Se usa grid y no `columns` a propósito: `columns` llena la primera
    columna de arriba abajo antes de pasar a la segunda, y con estrategias
    numeradas (1.1, 1.2…) el lector ve 1.1 junto a 1.6 y se pierde.
-   El grid ordena por filas: 1.1 | 1.2 / 1.3 | 1.4. El costo es un borde
-   inferior algo irregular en cada fila, imperceptible aquí porque las
-   alturas apenas varían (~80px de diferencia). */
+   El grid ordena por filas: 1.1 | 1.2 / 1.3 | 1.4.
+
+   `align-items: stretch` (por defecto) iguala la altura de las tarjetas
+   DENTRO de cada fila, que es lo único que el ojo compara. No se igualan
+   todas las de la fase: la dispersión de texto llega a 4.2× en el objetivo 1
+   y las tarjetas cortas quedarían con un hueco enorme. Por fila el peor
+   caso es 2.5×, y el sobrante se reparte solo (ver .strat__inst). */
 .phase__grid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: clamp(1.5rem, 3vw, 2.75rem);
   row-gap: clamp(1.25rem, 2.5vw, 2rem);
-  align-items: start;
+  /* Todas las tarjetas de una fase miden igual. Dentro de una fila el grid
+     ya las igualaba, pero entre filas variaban 12-54px y al bajar la vista
+     se leía como desorden. El sobrante no cae al fondo: .strat__body crece
+     y empuja la bandera de institución al pie, así las banderas se alinean
+     y aparece un ritmo horizontal. */
+  grid-auto-rows: 1fr;
 }
 /* Regla vertical entre columnas */
 .phase__grid::before {
@@ -951,13 +960,21 @@ p { margin: 0; }
   pointer-events: none;
 }
 @media (max-width: 900px) {
-  .phase__grid { grid-template-columns: 1fr; }
+  .phase__grid {
+    grid-template-columns: 1fr;
+    /* En una sola columna igualar alturas haría que TODAS las tarjetas
+       midan lo que la más larga: una de dos líneas quedaría gigante.
+       Sin filas que emparejar, la altura natural es la correcta. */
+    grid-auto-rows: auto;
+  }
   .phase__grid::before { display: none; }
 }
 
 /* ---- Tarjeta de estrategia ---- */
 .strat {
   position: relative;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0;
   padding: clamp(1.35rem, 2.4vw, 1.9rem);
   border-radius: var(--r-lg);
@@ -968,6 +985,15 @@ p { margin: 0; }
   transition: transform var(--t-med) var(--ease), filter var(--t-med) var(--ease);
 }
 .strat:hover { transform: translateY(-4px); }
+
+/* El ícono flota, y los floats no funcionan dentro de un contenedor flex:
+   se volverían ítems del flex. Por eso el contenido va envuelto en este
+   bloque, que sí establece contexto de float. El bloque crece para llenar
+   la tarjeta y empuja la bandera de institución al pie. */
+.strat__body {
+  flex: 1;
+  min-width: 0;
+}
 
 /* Halo de esquina: da profundidad y evita el plano muerto */
 .strat::after {
@@ -1058,10 +1084,13 @@ p { margin: 0; }
 }
 .strat__text span { opacity: 0.85; }
 
-/* Institución con tratamiento de bandera, ícono contenido */
+/* Institución con tratamiento de bandera, ícono contenido.
+   `align-self: flex-start` la mantiene angosta (no se estira al ancho);
+   el margen superior fijo la separa del texto y, como .strat__body crece,
+   la bandera queda anclada al pie de la tarjeta. */
 .strat__inst {
   position: relative;
-  clear: both;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   margin-top: var(--s-4);
