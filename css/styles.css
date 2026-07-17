@@ -826,18 +826,48 @@ p { margin: 0; }
    ============================================================ */
 .roadmap { margin-top: clamp(2.5rem, 6vw, 4rem); }
 
+/* Encabezado del roadmap.
+   El título es un puente gramatical, no adorno: en el Word, objetivo y
+   estrategia comparten fila y se leen como una sola oración ("Imponer el
+   control del territorio… incrementando el poder coercitivo…"). Al separar
+   la tarjeta del objetivo de las estrategias, los gerundios quedaban
+   colgando sin sujeto a la vista. "Cómo se alcanza este objetivo" devuelve
+   el marco. El eyebrow conserva el nombre que el documento le da a esta
+   sección. */
 .roadmap__head {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--s-3);
   margin-bottom: var(--s-5);
   padding-bottom: var(--s-3);
   border-bottom: 1px solid var(--t-15);
 }
+.roadmap__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+.roadmap__eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
 .roadmap__title { font-size: var(--fs-xl); }
-.roadmap__count { font-size: var(--fs-sm); color: var(--t-60); }
+.roadmap__count {
+  font-size: var(--fs-sm);
+  color: var(--t-60);
+  padding-bottom: 0.2rem;
+}
 
 /* ---- Fase = plazo de ejecución ---- */
 .phase { padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
